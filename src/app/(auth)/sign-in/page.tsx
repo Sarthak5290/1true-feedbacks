@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { signIn } from "next-auth/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -20,7 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
-const Page = () => {
+const PageContent = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
@@ -61,7 +62,7 @@ const Page = () => {
       router.replace(callbackUrl);
       router.refresh();
     } catch (error) {
-      console.error("Sign-in error:", error); // Log the error for debugging
+      console.error("Sign-in error:", error);
       toast({
         title: "Error",
         description: "An unexpected error occurred. Please try again.",
@@ -113,11 +114,7 @@ const Page = () => {
                 </FormItem>
               )}
             />
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={isSubmitting}
-            >
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
                   <Loader2 className="animate-spin h-5 w-5 mr-2" />
@@ -141,5 +138,11 @@ const Page = () => {
     </div>
   );
 };
+
+const Page = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <PageContent />
+  </Suspense>
+);
 
 export default Page;

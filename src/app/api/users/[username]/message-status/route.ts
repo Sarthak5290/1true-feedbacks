@@ -1,10 +1,15 @@
 import { dbConnect } from "@/app/lib/dbConnect";
 import UserModel from "@/app/model/User.model";
+import { NextRequest } from "next/server";
 
+type Params = Promise<{ username: string }>;
+
+// Updated type definition for the route handler
 export async function GET(
-  request: Request,
-  { params }: { params: { username: string } }
-) {
+  request: NextRequest,
+  { params }: { params: Params }
+): Promise<Response> {
+  // Add return type
   console.log("Received request to fetch user status.");
 
   try {
@@ -12,7 +17,7 @@ export async function GET(
     await dbConnect();
     console.log("Database connected successfully.");
 
-    const username = params.username;
+    const { username } = await params;
     console.log("Received username:", username);
 
     if (!username) {
@@ -26,7 +31,7 @@ export async function GET(
     }
 
     console.log("Querying user with username:", username);
-    const userInfo = await UserModel.findOne({ username: username }).select(
+    const userInfo = await UserModel.findOne({ username }).select(
       "isAcceptingMessages"
     );
     console.log("Query result:", userInfo);
