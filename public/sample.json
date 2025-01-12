@@ -1,0 +1,53 @@
+[{
+    "_id": {
+      "$oid": "678287f6b4de0f03d680288e"
+    },
+    "username": "sarthak_29",
+    "email": "gaikwadrajaram03@gmail.com",
+    "password": "$2a$10$9jWrWl9eyjnH2iVM5NCX8eS9YJccmh/.2aV0oMPuQ.kfMxNUPNVyK",
+    "verifyCode": "523736",
+    "verifyCodeExpiry": {
+      "$date": "2025-01-11T16:02:14.315Z"
+    },
+    "isVerified": true,
+    "isAcceptingMessages": true,
+    "messages": [
+      {
+        "content": "This is a sample message!",
+        "createdAt": {
+          "$date": "2025-01-11T15:20:38.530Z"
+        },
+        "_id": {
+          "$oid": "67828c46b4de0f03d6802897"
+        }
+      },
+      {
+        "content": "This is a sample message!",
+        "createdAt": {
+          "$date": "2025-01-11T17:12:38.148Z"
+        },
+        "_id": {
+          "$oid": "6782a686b4de0f03d680289b"
+        }
+      },
+      {
+        "content": "This is a sample message!",
+        "createdAt": {
+          "$date": "2025-01-11T17:13:29.561Z"
+        },
+        "_id": {
+          "$oid": "6782a6b9b4de0f03d68028a0"
+        }
+      },
+      {
+        "content": "Can you help me with a math problem?",
+        "createdAt": {
+          "$date": "2025-01-11T17:14:10.264Z"
+        },
+        "_id": {
+          "$oid": "6782a6e2b4de0f03d68028a6"
+        }
+      }
+    ],
+    "__v": 4
+  }]
